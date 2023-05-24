@@ -7,9 +7,9 @@ export class PinCodeController {
   constructor(private readonly pincodeService: PinCodeService) {}
 
   @Get()
-  async list(): Promise<string> {
+  async list(): Promise<PinCode[]> {
     try {
-      return Promise.resolve('Hello');
+      return await this.pincodeService.list();
     } catch (err: any) {
       throw new InternalServerErrorException({
         statusCode: 500,

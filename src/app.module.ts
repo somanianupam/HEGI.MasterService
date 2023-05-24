@@ -34,15 +34,6 @@ const logFormat = winston.format.printf((msg) => {
     }),
     WinstonModule.forRoot({
       transports: [
-        new winston.transports.File({
-          filename: './src/logger/error.log',
-          level: 'error',
-        }),
-        new winston.transports.File({
-          filename: './src/logger/combination.log',
-          level: 'debug',
-          tailable: true,
-        }),
         new winston.transports.Console({
           level: 'debug',
         }),
