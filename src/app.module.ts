@@ -1,13 +1,13 @@
 import { Module } from '@nestjs/common';
-import { PinCodeModule } from './modules/pincode/pincode.module';
-import { HealthModule } from './shared/health/health.module';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 import { WinstonModule } from 'nest-winston';
 import * as winston from 'winston';
 import { v4 as uuid } from 'uuid';
+import { PinCodeModule } from './modules/pincode/pincode.module';
+import { HealthModule } from './shared/health/health.module';
+import { LoggerService } from './shared/logger/logger.service';
 import configs from './configs';
-
-import { TypeOrmModule } from '@nestjs/typeorm';
-import { ConfigModule, ConfigService } from '@nestjs/config';
 
 const logFormat = winston.format.printf((msg) => {
   return `[${msg.timestamp}] [${msg.level}] [expressRequestId=${uuid()}]: ${
@@ -34,6 +34,15 @@ const logFormat = winston.format.printf((msg) => {
     }),
     WinstonModule.forRoot({
       transports: [
+        new winston.transports.File({
+          filename: './logger/error.log',
+          level: 'error',
+        }),
+        new winston.transports.File({
+          filename: './logger/combination.log',
+          level: 'debug',
+          tailable: true,
+        }),
         new winston.transports.Console({
           level: 'debug',
         }),
@@ -51,6 +60,6 @@ const logFormat = winston.format.printf((msg) => {
       },
     }),
   ],
-  providers: [],
+  providers: [LoggerService],
 })
 export class AppModule {}
