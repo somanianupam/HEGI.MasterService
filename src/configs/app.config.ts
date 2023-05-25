@@ -7,6 +7,6 @@ export default registerAs(
     name: process.env.APP_NAME,
     env: process.env.APP_ENV,
     repoVersion: version,
-    globalPrefix: 'api/v1',
+    globalPrefix: `api/${version}`,
   }),
 );

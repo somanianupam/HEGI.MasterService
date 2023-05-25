@@ -1,5 +1,4 @@
 import { Module } from '@nestjs/common';
-import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { WinstonModule } from 'nest-winston';
 import * as winston from 'winston';
@@ -10,27 +9,17 @@ import { LoggerService } from './shared/logger/logger.service';
 import configs from './configs';
 
 const logFormat = winston.format.printf((msg) => {
-  return `[${msg.timestamp}] [${msg.level}] [expressRequestId=${uuid()}]: ${
-    msg.message
-  }`;
+  return `[${msg.timestamp}] [${msg.level}] [expressRequestId=${uuid()}]: ${msg.message}`;
 });
 
 @Module({
   imports: [
-    PinCodeModule,
-    HealthModule,
     ConfigModule.forRoot({
       load: configs,
       isGlobal: true,
       cache: true,
       envFilePath: ['.env'],
       expandVariables: true,
-    }),
-    TypeOrmModule.forRootAsync({
-      imports: [ConfigModule],
-      useFactory: (configService: ConfigService) =>
-        configService.get('database'),
-      inject: [ConfigService],
     }),
     WinstonModule.forRoot({
       transports: [
@@ -47,11 +36,7 @@ const logFormat = winston.format.printf((msg) => {
           level: 'debug',
         }),
       ],
-      format: winston.format.combine(
-        winston.format.timestamp(),
-        logFormat,
-        winston.format.json(),
-      ),
+      format: winston.format.combine(winston.format.timestamp(), logFormat, winston.format.json()),
       levels: {
         info: 0,
         warn: 1,
@@ -59,6 +44,8 @@ const logFormat = winston.format.printf((msg) => {
         error: 3,
       },
     }),
+    PinCodeModule,
+    HealthModule,
   ],
   providers: [LoggerService],
 })

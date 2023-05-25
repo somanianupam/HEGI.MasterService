@@ -1,13 +1,13 @@
 import { Module } from '@nestjs/common';
 import { PinCodeController } from './pincode.controller';
 import { PinCodeService } from './pincode.service';
-import { TypeOrmModule } from '@nestjs/typeorm';
-import { PinCode } from '../common/entities/pincode.entity';
+import { pincodeProviders } from './pincode.provider';
+import { DatabaseModule } from '../common/database/database.module';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([PinCode])],
+  imports: [DatabaseModule],
   controllers: [PinCodeController],
-  providers: [PinCodeService],
+  providers: [PinCodeService, ...pincodeProviders],
   exports: [PinCodeService],
 })
 export class PinCodeModule {}

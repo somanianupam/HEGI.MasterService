@@ -1,20 +1,22 @@
-# Base image
-FROM node:18
+FROM node:18-alpine
 
-# Create app directory
+ARG NODE_ENV=production
+ENV NODE_ENV=${NODE_ENV}
+
 WORKDIR /usr/src/app
 
-# A wildcard is used to ensure both package.json AND package-lock.json are copied
-COPY package*.json ./
+COPY package.json package-lock.json ./
+COPY ./src ./src
+COPY ./nest-cli.json ./
+COPY ./tsconfig.build.json ./
+COPY ./tsconfig.json ./
 
-# Install app dependencies
-RUN npm install
+RUN npm install -g @nestjs/cli
+RUN npm ci --only=production
 
-# Bundle app source
-COPY . .
-
-# Creates a "dist" folder with the production build
 RUN npm run build
 
-# Start the server using the production build
-CMD [ "node", "dist/main.js" ]
+ENV PORT 3000
+ENV PORT 9229
+
+CMD ["node", "dist/main"]
