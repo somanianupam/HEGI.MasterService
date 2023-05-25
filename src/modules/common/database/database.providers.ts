@@ -1,10 +1,11 @@
 import { Sequelize } from 'sequelize-typescript';
 import { PinCode } from '../entities/pincode.entity';
 import { DatabaseService } from './database.service';
+import { SEQUELIZE } from '../../../constants';
 
 export const databaseProviders = [
   {
-    provide: 'SEQUELIZE',
+    provide: SEQUELIZE,
     useFactory: async (databaseService: DatabaseService) => {
       const sequelize = new Sequelize(databaseService.sequelizeOrmConfig);
       sequelize.addModels([PinCode]);
