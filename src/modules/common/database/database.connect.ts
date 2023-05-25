@@ -6,6 +6,11 @@ import { DatabaseService } from './database.service';
 
 export const sequelizeConnect = async (databaseService: DatabaseService):Promise<Sequelize> => {
     const sequelize = new Sequelize(databaseService.sequelizeOrmConfig);
-    sequelize.addModels([PinCode]);
-    return sequelize;
+      sequelize.addModels([PinCode]);
+      await SequelizeTypescriptMigration.makeMigration(sequelize, {
+        outDir: path.resolve('db','migrations'),
+        migrationName: "migration",
+        preview: false,
+      });
+      return sequelize;
 }
