@@ -1,10 +1,11 @@
 import { Injectable, Inject } from '@nestjs/common';
 import { PinCode } from '../common/entities/pincode.entity';
+import { PINCODE_REPOSITORY } from '../../constants';
 
 @Injectable()
 export class PinCodeService {
   constructor(
-    @Inject('PinCodeRepository')
+    @Inject(PINCODE_REPOSITORY)
     private readonly pincodeRepository: typeof PinCode,
   ) {}
 
