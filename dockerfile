@@ -7,6 +7,7 @@ WORKDIR /usr/src/app
 
 COPY package.json package-lock.json ./
 COPY ./src ./src
+COPY ./configs ./configs
 COPY ./nest-cli.json ./
 COPY ./tsconfig.build.json ./
 COPY ./tsconfig.json ./

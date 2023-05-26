@@ -6,8 +6,7 @@ import { ConfigService } from '@nestjs/config';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   const configService = app.get(ConfigService);
-  const globalPrefix: string = configService.get<string>('app.globalPrefix');
-
+  const globalPrefix: string = configService.get<string>('api.prefix');
   app.setGlobalPrefix(globalPrefix);
   // handle all user input validation globally
   app.useGlobalPipes(new ValidateInputPipe());

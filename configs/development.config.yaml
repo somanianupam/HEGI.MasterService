@@ -1,0 +1,16 @@
+http:
+  host: 'localhost'
+  port: 3000
+
+api:
+  prefix: 'api/v1'
+
+db:
+  postgres:
+    host: 'localhost'
+    port: 5432
+    name: 'postgres'
+    username: 'postgres'
+    password: 'admin'
+    ssl: false
+    logging: false
