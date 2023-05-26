@@ -10,6 +10,7 @@ async function bootstrap() {
   app.setGlobalPrefix(globalPrefix);
   // handle all user input validation globally
   app.useGlobalPipes(new ValidateInputPipe());
-  await app.listen(3000);
+  const port: number = configService.get<number>('http.port');
+  await app.listen(port);
 }
 bootstrap();
