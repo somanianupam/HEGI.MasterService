@@ -18,7 +18,9 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "migrate": "npx sequelize-cli db:migrate",
+    "migrate:rollback": "npx sequelize-cli db:migrate:undo"
   },
   "dependencies": {
     "@nestjs/axios": "^2.0.0",
@@ -39,6 +41,7 @@
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.2.0",
     "sequelize-typescript": "^2.1.5",
+    "sequelize-typescript-migration-lts": "^3.2.5",
     "winston": "^3.8.2",
     "winston-daily-rotate-file": "^4.7.1"
   },
