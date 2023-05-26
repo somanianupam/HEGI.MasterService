@@ -12,7 +12,7 @@ import { DatabaseModule } from './modules/common/database/database.module';
       expandVariables: true,
       envFilePath: ['.env'],
     }),
-    DatabaseModule
+    DatabaseModule,
   ],
   providers: [],
 })
