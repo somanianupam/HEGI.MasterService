@@ -1,27 +1,31 @@
-require('dotenv').config()
+const yaml = require('js-yaml');
+const fs   = require('fs');
+const path = require('path')
+
+const dev_config = yaml.load(fs.readFileSync(path.join('configs', 'development.config.yaml'), 'utf8'));
 module.exports = {
     "development": {
-        "username":  process.env.DATABASE_USER,
-        "password": process.env.DATABASE_PASSWORD,
-        "database": process.env.DATABASE_NAME,
-        "host": process.env.DATABASE_HOST,
+        "username": dev_config.db.postgres.username,
+        "password": dev_config.db.postgres.password,
+        "database": dev_config.db.postgres.name,
+        "host": dev_config.db.postgres.host,
         "dialect": 'postgres',
-        "port": parseInt(process.env.DATABASE_PORT, 10) || 5432,
+        "port": parseInt(dev_config.db.postgres.port, 10) || 5432,
     },
     "test": {
-        "username":  process.env.DATABASE_USER,
-        "password": process.env.DATABASE_PASSWORD,
-        "database": process.env.DATABASE_NAME,
-        "host": process.env.DATABASE_HOST,
+        "username": dev_config.db.postgres.username,
+        "password": dev_config.db.postgres.password,
+        "database": dev_config.db.postgres.name,
+        "host": dev_config.db.postgres.host,
         "dialect": 'postgres',
-        "port": parseInt(process.env.DATABASE_PORT, 10) || 5432,
+        "port": parseInt(dev_config.db.postgres.port, 10) || 5432,
     },
     "production": {
-        "username":  process.env.DATABASE_USER,
-        "password": process.env.DATABASE_PASSWORD,
-        "database": process.env.DATABASE_NAME,
-        "host": process.env.DATABASE_HOST,
+        "username": dev_config.db.postgres.username,
+        "password": dev_config.db.postgres.password,
+        "database": dev_config.db.postgres.name,
+        "host": dev_config.db.postgres.host,
         "dialect": 'postgres',
-        "port": parseInt(process.env.DATABASE_PORT, 10) || 5432,
+        "port": parseInt(dev_config.db.postgres.port, 10) || 5432,
     }
 }
