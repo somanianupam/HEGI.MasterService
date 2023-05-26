@@ -30,6 +30,6 @@
     "arrow-parens": false,
     "object-literal-sort-keys": false
   },
-  "include": ["src", "test"],
+  "include": ["src", "test", ".yaml"],
   "exclude": ["node_modules", "dist", "*coverage", "logs", "data"]
 }

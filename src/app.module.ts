@@ -6,7 +6,7 @@ import { v4 as uuid } from 'uuid';
 import { PinCodeModule } from './modules/pincode/pincode.module';
 import { HealthModule } from './shared/health/health.module';
 import { LoggerService } from './shared/logger/logger.service';
-import configs from './configs';
+import Config from './configs';
 
 const logFormat = winston.format.printf((msg) => {
   return `[${msg.timestamp}] [${msg.level}] [expressRequestId=${uuid()}]: ${msg.message}`;
@@ -15,11 +15,11 @@ const logFormat = winston.format.printf((msg) => {
 @Module({
   imports: [
     ConfigModule.forRoot({
-      load: configs,
+      load: Config,
       isGlobal: true,
       cache: true,
-      envFilePath: ['.env'],
       expandVariables: true,
+      envFilePath: ['.env'],
     }),
     WinstonModule.forRoot({
       transports: [

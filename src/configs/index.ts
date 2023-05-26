@@ -1,4 +1,3 @@
-import AppConfig from './app.config';
-import DatabaseConfig from './database.config';
+import Config from './app.configuration';
 
-export default [AppConfig, DatabaseConfig];
+export default [Config];
