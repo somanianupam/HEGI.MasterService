@@ -1,13 +1,14 @@
-import { Controller, Get } from '@nestjs/common';
-import { HealthCheckService, HealthCheck } from '@nestjs/terminus';
+import { Controller, Get, Param } from '@nestjs/common';
+import { HealthCheck } from '@nestjs/terminus';
+import { HealthService } from './health.service';
 
 @Controller('health')
 export class HealthController {
-  constructor(private health: HealthCheckService) {}
+  constructor(private healthService: HealthService) {}
 
-  @Get()
+  @Get(':service')
   @HealthCheck()
-  check() {
-    return this.health.check([]);
+  check(@Param('service') service: string) {
+    return this.healthService.check(service);
   }
 }
