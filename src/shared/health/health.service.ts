@@ -6,7 +6,7 @@ export class HealthService {
   constructor(private health: HealthCheckService, private db: SequelizeHealthIndicator) {}
 
   check(service: string) {
-    service
+    service;
     return this.database();
   }
 
