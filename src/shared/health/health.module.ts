@@ -7,18 +7,22 @@ import { SequelizeModule, SequelizeModuleOptions } from '@nestjs/sequelize';
 import { ConfigService } from '@nestjs/config';
 
 @Module({
-  imports: [TerminusModule, HttpModule, SequelizeModule.forRootAsync({
-    inject: [ConfigService],
-    useFactory: (configService: ConfigService): SequelizeModuleOptions => ({
-      dialect: 'postgres',
-      host: configService.get<string>('db.postgres.host'),
-      port: configService.get<number>('db.postgres.port'),
-      username: configService.get<string>('db.postgres.username'),
-      password: configService.get<string>('db.postgres.password'),
-      database: configService.get<string>('db.postgres.name')
+  imports: [
+    TerminusModule,
+    HttpModule,
+    SequelizeModule.forRootAsync({
+      inject: [ConfigService],
+      useFactory: (configService: ConfigService): SequelizeModuleOptions => ({
+        dialect: 'postgres',
+        host: configService.get<string>('db.postgres.host'),
+        port: configService.get<number>('db.postgres.port'),
+        username: configService.get<string>('db.postgres.username'),
+        password: configService.get<string>('db.postgres.password'),
+        database: configService.get<string>('db.postgres.name'),
+      }),
     }),
-  })],
+  ],
   controllers: [HealthController],
-  providers: [HealthService]
+  providers: [HealthService],
 })
-export class HealthModule { }
+export class HealthModule {}
