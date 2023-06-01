@@ -6,7 +6,7 @@ import { NotFoundException } from '@nestjs/common';
 
 describe('HealthController', () => {
   let healthController: HealthController;
-  let healthService: HealthService
+  let healthService: HealthService;
 
   beforeEach(async () => {
     const moduleRef = await Test.createTestingModule({
@@ -23,18 +23,18 @@ describe('HealthController', () => {
     expect(healthController).toBeDefined();
   });
 
-  describe("check", () => {
-    it("should succeed", () => {
-      let result = { "status": "ok", "info": { "disk": { "status": "up" } }, "error": {}, "details": { "disk": { "status": "up" } } };
+  describe('check', () => {
+    it('should succeed', () => {
+      const result = { status: 'ok', info: { disk: { status: 'up' } }, error: {}, details: { disk: { status: 'up' } } };
       jest.spyOn(healthService, 'check').mockImplementation(() => result);
       expect(healthController.check('disk')).toBe(result);
-    })
-    it("should fail", () => {
+    });
+    it('should fail', () => {
       try {
         healthController.check('random_service');
       } catch (error) {
-        expect(error).toBeInstanceOf(NotFoundException); 
+        expect(error).toBeInstanceOf(NotFoundException);
       }
-    })
-  })
+    });
+  });
 });
