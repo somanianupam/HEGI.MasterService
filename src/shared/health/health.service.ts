@@ -7,6 +7,7 @@ import {
   MicroserviceHealthIndicator,
   SequelizeHealthIndicator,
 } from '@nestjs/terminus';
+import path from 'path';
 import { HealthEnum } from './enums/health.enum';
 
 @Injectable()
@@ -67,6 +68,6 @@ export class HealthService {
   }
 
   private diskCheck() {
-    return this.health.check([() => this.disk.checkStorage(HealthEnum.Disk, { path: '/', thresholdPercent: 0.5 })]);
+    return this.health.check([() => this.disk.checkStorage(HealthEnum.Disk, { path: path.resolve('/'), thresholdPercent: 0.5 })]);
   }
 }
