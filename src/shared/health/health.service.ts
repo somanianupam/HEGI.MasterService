@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import {
   DiskHealthIndicator,
   HealthCheckService,
@@ -7,8 +7,8 @@ import {
   MicroserviceHealthIndicator,
   SequelizeHealthIndicator,
 } from '@nestjs/terminus';
-import path from 'path';
 import { HealthEnum } from './enums/health.enum';
+import * as HealthConfig from '../../constants/health.endpoints';
 
 @Injectable()
 export class HealthService {
@@ -18,7 +18,7 @@ export class HealthService {
     private http: HttpHealthIndicator,
     private microservice: MicroserviceHealthIndicator,
     private memory: MemoryHealthIndicator,
-    private readonly disk: DiskHealthIndicator,
+    private disk: DiskHealthIndicator,
   ) {}
 
   check(service: string) {
@@ -45,6 +45,7 @@ export class HealthService {
         break;
 
       default:
+        throw new NotFoundException(`'${service}' is not a valid service to check health.`);
         break;
     }
     return response;
@@ -55,19 +56,18 @@ export class HealthService {
   }
 
   private httpCheck() {
-    return this.health.check([() => this.http.pingCheck(HealthEnum.Http, 'http://localhost:3000/')]);
+    return this.health.check([() => this.http.pingCheck(HealthEnum.Http, HealthConfig.HTTP_PING_URL)]);
   }
 
   private microserviceCheck() {
-    // return this.health.check([() => this.microservice.pingCheck(HealthEnum.Microservice, 'http://localhost:3000/')]);
-    return this.health.check([() => this.http.pingCheck(HealthEnum.Microservice, 'http://localhost:3000/')]);
+    return this.health.check([() => this.microservice.pingCheck(HealthEnum.Microservice, HealthConfig.MICROSERVICE_OPTION)]);
   }
 
   private memoryCheck() {
-    return this.health.check([() => this.memory.checkHeap(HealthEnum.Memory, 150 * 1024 * 1024)]);
+    return this.health.check([() => this.memory.checkHeap(HealthEnum.Memory, HealthConfig.MEMORY_THRESHOLD)]);
   }
 
   private diskCheck() {
-    return this.health.check([() => this.disk.checkStorage(HealthEnum.Disk, { path: path.resolve('/'), thresholdPercent: 0.5 })]);
+    return this.health.check([() => this.disk.checkStorage(HealthEnum.Disk, HealthConfig.STORAGE_OPTION)]);
   }
 }
