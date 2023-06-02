@@ -1,9 +1,12 @@
-import { IsNotEmpty } from '@nestjs/class-validator';
+import { IsNotEmpty, IsOptional, MinLength, MaxLength, IsNumberString } from '@nestjs/class-validator';
 
 export class PinCodeDTO {
-  @IsNotEmpty()
-  id: string;
+  @IsOptional()
+  name: string;
 
   @IsNotEmpty()
-  pincode: string;
+  @MinLength(6)
+  @MaxLength(6)
+  @IsNumberString()
+  pinNumber: string;
 }

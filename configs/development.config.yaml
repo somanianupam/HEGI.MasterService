@@ -7,6 +7,7 @@ api:
 
 db:
   postgres:
+    type: 'postgres'
     host: 'localhost'
     port: 5432
     name: 'postgres'

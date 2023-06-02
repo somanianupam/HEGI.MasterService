@@ -1,11 +1,11 @@
 import { DatabaseService } from './database.service';
-import { SEQUELIZE } from '../../../constants';
-import { sequelizeConnect } from './database.connect';
+import { DATABASE_CONNECTION } from '../../../constants';
+import { typeOrmConnect } from './database.connect';
 
 export const databaseProviders = [
   {
-    provide: SEQUELIZE,
-    useFactory: sequelizeConnect,
+    provide: DATABASE_CONNECTION,
+    useFactory: typeOrmConnect,
     inject: [DatabaseService],
   },
 ];
