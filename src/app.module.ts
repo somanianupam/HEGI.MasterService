@@ -47,7 +47,7 @@ const logFormat = winston.format.printf((msg) => {
     }),
     PinCodeModule,
     HealthModule,
-    TypeOrmModule.forRoot(databseConfig)
+    TypeOrmModule.forRoot(databseConfig),
   ],
   providers: [LoggerService],
 })
