@@ -4,9 +4,10 @@ import { PinCodeService } from './pincode.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { PinCode } from '../common/entities/pincode.entity';
 import { AuthModule } from '../common/auth/auth.module';
+import { DatabaseModule } from '../common/database/database.module';
 
 @Module({
-  imports: [AuthModule, TypeOrmModule.forFeature([PinCode])],
+  imports: [DatabaseModule,AuthModule, TypeOrmModule.forFeature([PinCode])],
   controllers: [PinCodeController],
   providers: [PinCodeService],
 })

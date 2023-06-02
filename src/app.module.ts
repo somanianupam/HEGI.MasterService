@@ -9,7 +9,6 @@ import { LoggerService } from './shared/logger/logger.service';
 import Config from './configs';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import * as databseConfig from './modules/common/database/databaseConfig';
-import { HospitalModule } from './modules/hospital/hospital.module';
 const logFormat = winston.format.printf((msg) => {
   return `[${msg.timestamp}] [${msg.level}] [expressRequestId=${uuid()}]: ${msg.message}`;
 });
