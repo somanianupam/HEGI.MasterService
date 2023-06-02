@@ -26,5 +26,4 @@ export class PinCode {
 
   @Column({ unique: true })
   pinNumber: string;
-
 }
