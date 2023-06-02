@@ -8,7 +8,7 @@ import { HealthModule } from './shared/health/health.module';
 import { LoggerService } from './shared/logger/logger.service';
 import Config from './configs';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import * as databseConfig from './modules/common/database/databaseConfig';
+import * as databseConfig from './modules/common/database/database.config';
 const logFormat = winston.format.printf((msg) => {
   return `[${msg.timestamp}] [${msg.level}] [expressRequestId=${uuid()}]: ${msg.message}`;
 });
@@ -47,7 +47,7 @@ const logFormat = winston.format.printf((msg) => {
     }),
     PinCodeModule,
     HealthModule,
-    TypeOrmModule.forRoot(databseConfig),
+    TypeOrmModule.forRoot(databseConfig)
   ],
   providers: [LoggerService],
 })
