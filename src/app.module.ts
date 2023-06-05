@@ -22,6 +22,7 @@ const logFormat = winston.format.printf((msg) => {
       expandVariables: true,
       envFilePath: ['.env'],
     }),
+    DatabaseModule,
     WinstonModule.forRoot({
       transports: [
         new winston.transports.File({

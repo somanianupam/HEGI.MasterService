@@ -4,6 +4,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { PinCode } from '../entities/pincode.entity';
 import { Hospital } from '../entities/hospital.entity';
 import { Address } from '../entities/address.entity';
+
 @Module({
   imports: [
     TypeOrmModule.forRootAsync({
