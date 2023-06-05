@@ -9,9 +9,9 @@ import { AuthService } from '../common/auth/auth.service';
   model: {
     type: PinCode,
   },
-  dto:{
-    create:PinCodeDTO
-  }
+  dto: {
+    create: PinCodeDTO,
+  },
 })
 @Controller('pincodes')
 // @UseGuards(AuthGuard())

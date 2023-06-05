@@ -1,9 +1,7 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { PinCode } from '../entities/pincode.entity';
-import { Hospital } from '../entities/hospital.entity';
-import { Address } from '../entities/address.entity';
+import { join } from 'path';
 
 @Module({
   imports: [
@@ -17,8 +15,7 @@ import { Address } from '../entities/address.entity';
         username: configService.get<string>('db.postgres.username'),
         password: configService.get<string>('db.postgres.password'),
         database: configService.get<string>('db.postgres.name'),
-        entities: [PinCode, Hospital, Address],
-        // entities: [join(__dirname, '**', '*.entity.{ts,js}')],
+        entities: [join(__dirname, '/../**', '*.entity.{ts,js}')],
         synchronize: true, // should be false at production!
       }),
     }),
