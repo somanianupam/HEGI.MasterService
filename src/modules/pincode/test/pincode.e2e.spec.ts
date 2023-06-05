@@ -22,16 +22,16 @@ describe('HospitalController', () => {
     it('should return an array of example entities', async () => {
       const expectedResult: PinCode[] = [
         {
-            "id": 1,
-            "name": null,
-            "pinNumber": "125319"
+          id: 1,
+          name: null,
+          pinNumber: '125319',
         },
         {
-            "id": 8,
-            "name": "tests",
-            "pinNumber": "123456"
-        }
-    ]
+          id: 8,
+          name: 'tests',
+          pinNumber: '123456',
+        },
+      ];
       jest.spyOn(repository, 'findAll').mockResolvedValue(expectedResult);
       const result = await repository.findAll();
       expect(result).toBeDefined();
@@ -42,10 +42,10 @@ describe('HospitalController', () => {
   describe('findOne', () => {
     it('should return an example entity', async () => {
       const expectedResult: PinCode = {
-        "id": 1,
-        "name": null,
-        "pinNumber": "125319"
-    };
+        id: 1,
+        name: null,
+        pinNumber: '125319',
+      };
       jest.spyOn(repository, 'findOneById').mockResolvedValue(expectedResult);
 
       const result = await repository.findOneById(3);
@@ -70,15 +70,15 @@ describe('HospitalController', () => {
   describe('create', () => {
     it('should create a new example entity', async () => {
       const entityToCreate: PinCode = {
-        "id": null,
-        "name": null,
-        "pinNumber": "125319"
-    }
+        id: null,
+        name: null,
+        pinNumber: '125319',
+      };
       const expectedResult: PinCode = {
-        "id": 1,
-        "name": null,
-        "pinNumber": "125319"
-    }
+        id: 1,
+        name: null,
+        pinNumber: '125319',
+      };
       jest.spyOn(repository, 'createHospital').mockResolvedValue(expectedResult);
 
       const result = await repository.createHospital(entityToCreate);
@@ -129,10 +129,10 @@ describe('HospitalController', () => {
         website: 'insurenoidas@cloudninescares.com',
       };
       const expectedResult: PinCode = {
-        "id": 1,
-        "name": null,
-        "pinNumber": "125319"
-    }
+        id: 1,
+        name: null,
+        pinNumber: '125319',
+      };
       jest.spyOn(repository, 'updateHospital').mockResolvedValue(expectedResult);
 
       const result = await repository.updateHospital(6, entityToUpdate);
@@ -143,9 +143,9 @@ describe('HospitalController', () => {
   describe('update', () => {
     it('should return error to update an non existing entity', async () => {
       const entityToUpdate: any = {
-        "name": null,
-        "pinNumber": "125319"
-    }
+        name: null,
+        pinNumber: '125319',
+      };
       const expectedResult: any = {
         statusCode: 404,
         message: 'Hospital not found',

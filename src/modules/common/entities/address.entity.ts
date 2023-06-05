@@ -9,7 +9,7 @@ export class Address {
   line1: string;
 
   @Column({ unique: false, nullable: true, update: true })
-  line2: number;
+  line2: string;
 
   @Column({ nullable: false, update: true })
   city: string;

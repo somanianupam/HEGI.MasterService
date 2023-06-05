@@ -48,7 +48,6 @@ const logFormat = winston.format.printf((msg) => {
     }),
     PinCodeModule,
     HospitalModule,
-    DatabaseModule,
     HealthModule,
   ],
   providers: [LoggerService],
