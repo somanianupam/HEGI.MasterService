@@ -3,26 +3,13 @@ import { HospitalController } from './hospital.controller';
 import { HospitalService } from './hospital.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Hospital } from '../common/entities/hospital.entity';
-import { AuthService } from '../common/auth/auth.service';
-import { JwtModule } from '@nestjs/jwt';
-import { jwtConstants } from '../common/auth/constants';
-import { JwtStrategy } from '../common/auth/jwt.strategy';
-import { PassportModule } from '@nestjs/passport';
-import { DatabaseModule } from './../common/database/database.module';
-const passportModule = PassportModule.register({ defaultStrategy: 'jwt' });
+import { AuthModule } from '../common/auth/auth.module';
+import { Address } from '../common/entities/address.entity';
+import { AddressController } from '../address/address.controller';
+import { AddressService } from '../address/address.service';
 @Module({
-  imports: [
-    DatabaseModule,
-    passportModule,
-    TypeOrmModule.forFeature([Hospital]),
-    JwtModule.register({
-      secret: jwtConstants.secret,
-      signOptions: {
-        expiresIn: jwtConstants.expirationTime,
-      },
-    }),
-  ],
+  imports: [AuthModule, TypeOrmModule.forFeature([Hospital, Address])],
   controllers: [HospitalController],
-  providers: [HospitalService, AuthService, JwtStrategy],
+  providers: [HospitalService, AddressController, AddressService],
 })
 export class HospitalModule {}

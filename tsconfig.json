@@ -30,6 +30,9 @@
     "arrow-parens": false,
     "object-literal-sort-keys": false
   },
+  "watchOptions": {
+    "watchFile": "fixedPollingInterval"
+  },
   "include": ["src", "test", ".yaml"],
   "exclude": ["node_modules", "dist", "*coverage", "logs", "data"]
 }

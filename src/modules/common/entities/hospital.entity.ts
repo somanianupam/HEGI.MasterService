@@ -1,8 +1,12 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToOne, JoinColumn } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, OneToOne, JoinColumn, Generated } from 'typeorm';
 import { Address } from './address.entity';
 @Entity()
 export class Hospital {
   @PrimaryGeneratedColumn()
+  id: number;
+
+  @Column()
+  @Generated('increment')
   hospitalId: number;
 
   @Column({ unique: true, nullable: false })
@@ -20,7 +24,7 @@ export class Hospital {
   @Column({ unique: true, nullable: true })
   website: string;
 
-  @OneToOne(() => Address)
-  @JoinColumn()
+  @OneToOne(() => Address, { cascade: true, onDelete: 'CASCADE', onUpdate: 'CASCADE' })
+  @JoinColumn({ name: 'address', referencedColumnName: 'id' })
   address: Address;
 }

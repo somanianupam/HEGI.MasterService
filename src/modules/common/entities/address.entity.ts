@@ -5,24 +5,24 @@ export class Address {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ unique: true, nullable: false })
+  @Column({ unique: true, nullable: false, update: true })
   line1: string;
 
-  @Column({ unique: false, nullable: true })
+  @Column({ unique: false, nullable: true, update: true })
   line2: number;
 
-  @Column({ nullable: false })
+  @Column({ nullable: false, update: true })
   city: string;
 
-  @Column({ nullable: false })
+  @Column({ nullable: false, update: true })
   state: string;
 
-  @Column({ nullable: false })
+  @Column({ nullable: false, update: true })
   pinNumber: string;
 
-  @Column({ nullable: true })
+  @Column({ nullable: true, update: true })
   latitude: string;
 
-  @Column({ nullable: true })
+  @Column({ nullable: true, update: true })
   longitude: string;
 }
