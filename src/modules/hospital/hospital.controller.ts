@@ -22,10 +22,13 @@ import { HospitalDTO } from './dtos/hospital.dto';
   },
 })
 @Controller('hospitals')
+
+// use authguard to authenticate api using jwt
 // @UseGuards(AuthGuard())
 export class HospitalController {
   constructor(private readonly service: HospitalService, private readonly addressController: AddressController) {}
 
+  // custom api to delete hospital along with address details
   @Override('deleteOneBase')
   async deleteHospitalAndAddress(@Param('id') id: number): Promise<any> {
     const hospitalRecords = await this.service.findById(id);
@@ -44,23 +47,5 @@ export class HospitalController {
       return { status: 500, message: 'Not able to delete address entity' };
     }
   }
-  // async createOne(data){
-  //     return await this.service.createOne(data,null);
-  // }
-  // async find(){
-  //   return await this.service.find();
-  // }
-
-  // async findOne(id:number){
-  //   return await this.service.findOne({where:{id:id}})
-  // }
-
-  // async updateOne(id:number,data){
-  //   const response=await this.service.findOne({where:{id:id}});
-  //   return await this.service.updateOne(data,response);
-  // }
-
-  // async deleteOne(id){
-  //   return await this.service.deleteOne(id);
-  // }
-}
+  
+  }
