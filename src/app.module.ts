@@ -7,8 +7,7 @@ import { PinCodeModule } from './modules/pincode/pincode.module';
 import { HealthModule } from './shared/health/health.module';
 import { LoggerService } from './shared/logger/logger.service';
 import Config from './configs';
-import { TypeOrmModule } from '@nestjs/typeorm';
-import * as databseConfig from './modules/common/database/database.config';
+import { DatabaseModule } from './modules/common/database/database.module';
 const logFormat = winston.format.printf((msg) => {
   return `[${msg.timestamp}] [${msg.level}] [expressRequestId=${uuid()}]: ${msg.message}`;
 });
@@ -22,6 +21,7 @@ const logFormat = winston.format.printf((msg) => {
       expandVariables: true,
       envFilePath: ['.env'],
     }),
+    DatabaseModule,
     WinstonModule.forRoot({
       transports: [
         new winston.transports.File({
@@ -47,7 +47,6 @@ const logFormat = winston.format.printf((msg) => {
     }),
     PinCodeModule,
     HealthModule,
-    TypeOrmModule.forRoot(databseConfig),
   ],
   providers: [LoggerService],
 })
