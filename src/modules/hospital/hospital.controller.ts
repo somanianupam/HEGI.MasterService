@@ -47,5 +47,4 @@ export class HospitalController {
       return { status: 500, message: 'Not able to delete address entity' };
     }
   }
-  
-  }
+}
