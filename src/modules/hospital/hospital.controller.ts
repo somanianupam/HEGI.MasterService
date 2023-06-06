@@ -1,4 +1,4 @@
-import { Controller, Param } from '@nestjs/common';
+import { Controller } from '@nestjs/common';
 import { HospitalService } from './hospital.service';
 import { Hospital } from '../common/entities/hospital.entity';
 import { Crud } from '@nestjsx/crud';

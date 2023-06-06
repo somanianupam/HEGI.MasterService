@@ -6,11 +6,7 @@ import { HealthService } from './health.service';
 import { DatabaseModule } from 'src/modules/common/database/database.module';
 
 @Module({
-  imports: [
-    TerminusModule,
-    HttpModule,
-    DatabaseModule
-  ],
+  imports: [TerminusModule, HttpModule, DatabaseModule],
   controllers: [HealthController],
   providers: [HealthService],
 })
