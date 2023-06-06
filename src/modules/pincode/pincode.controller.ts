@@ -16,9 +16,7 @@ import { AuthService } from '../common/auth/auth.service';
     },
   },
 })
-
 @Controller('pincodes')
-
 export class PinCodeController {
   constructor(private readonly service: PinCodeService, private authService: AuthService) {}
 }

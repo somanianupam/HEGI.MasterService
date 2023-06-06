@@ -1,7 +1,6 @@
-import { IsNotEmpty, IsOptional,MaxLength,IsString,MinLength,IsNumberString, IsEmail } from '@nestjs/class-validator';
+import { IsNotEmpty, IsOptional, MaxLength, IsString, MinLength, IsNumberString, IsEmail } from '@nestjs/class-validator';
 
 export class HospitalDTO {
-
   @IsNotEmpty()
   @IsString()
   @MaxLength(200)
@@ -42,12 +41,11 @@ export class HospitalDTO {
   CITY_ID: number;
 
   @IsOptional()
-  STATE_ID: number
+  STATE_ID: number;
 
   @IsOptional()
-  LATITUDE: string
+  LATITUDE: string;
 
   @IsOptional()
-  LONGITUDE:string
-
+  LONGITUDE: string;
 }

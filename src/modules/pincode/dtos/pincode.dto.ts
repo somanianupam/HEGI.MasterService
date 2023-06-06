@@ -20,5 +20,4 @@ export class PinCodeDTO {
   @MaxLength(10)
   @IsNumberString()
   SEQ_NUM: string;
-
 }

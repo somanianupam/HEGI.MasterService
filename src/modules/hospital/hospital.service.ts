@@ -8,6 +8,4 @@ export class HospitalService extends TypeOrmCrudService<Hospital> {
   constructor(@InjectRepository(Hospital) repo) {
     super(repo);
   }
-
-
 }

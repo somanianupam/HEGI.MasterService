@@ -11,10 +11,9 @@ export class PinCode extends Base {
   @Column({ nullable: true })
   PINCODE_NAME: string;
 
-  @Column({ nullable: true  })
-  CITY_ID: number
+  @Column({ nullable: true })
+  CITY_ID: number;
 
-  @Column({ nullable: true  })
-  SEQ_NUM: string
-
+  @Column({ nullable: true })
+  SEQ_NUM: string;
 }

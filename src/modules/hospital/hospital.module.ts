@@ -4,7 +4,7 @@ import { HospitalService } from './hospital.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Hospital } from '../common/entities/hospital.entity';
 @Module({
-  imports: [ TypeOrmModule.forFeature([Hospital])],
+  imports: [TypeOrmModule.forFeature([Hospital])],
   controllers: [HospitalController],
   providers: [HospitalService],
 })
