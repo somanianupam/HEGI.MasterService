@@ -1,13 +1,20 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
-
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn } from 'typeorm';
+import { Base } from './base.entity';
 @Entity()
-export class PinCode {
+export class PinCode extends Base {
   @PrimaryGeneratedColumn()
-  id: number;
-
-  @Column({ nullable: true })
-  name: string;
+  ID: number;
 
   @Column({ unique: true })
-  pinNumber: string;
+  PINCODE: string;
+
+  @Column({ nullable: true })
+  PINCODE_NAME: string;
+
+  @Column({ nullable: true  })
+  CITY_ID: number
+
+  @Column({ nullable: true  })
+  SEQ_NUM: string
+
 }

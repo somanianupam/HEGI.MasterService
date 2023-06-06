@@ -1,30 +1,44 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToOne, JoinColumn, Generated } from 'typeorm';
-import { Address } from './address.entity';
+import { Entity, PrimaryGeneratedColumn, Column,CreateDateColumn,UpdateDateColumn } from 'typeorm';
+import { Base } from './base.entity';
 @Entity()
-export class Hospital {
+export class Hospital extends Base {
   @PrimaryGeneratedColumn()
-  id: number;
-
-  @Column()
-  @Generated('increment')
-  hospitalId: number;
+  HOSPITAL_ID: number;
 
   @Column({ unique: true, nullable: false })
-  hospitalName: string;
+  HOSPITAL_NAME: string;
 
-  @Column({ unique: true, nullable: false })
-  locatorId: number;
+  @Column({nullable:true})
+  HOSPITAL_TYPE : string;
 
-  @Column({ unique: true, nullable: false })
-  phone: string;
+  @Column({unique: true,nullable:false})
+  ADDRESS : string;
 
-  @Column({ unique: true, nullable: true })
-  fax: string;
+  @Column({nullable:false})
+  PINCODE: string
 
-  @Column({ unique: true, nullable: true })
-  website: string;
+  @Column({nullable:true})
+  CITY_ID : number
 
-  @OneToOne(() => Address, { cascade: true, onDelete: 'CASCADE', onUpdate: 'CASCADE' })
-  @JoinColumn({ name: 'address', referencedColumnName: 'id' })
-  address: Address;
+  @Column({nullable:true})
+  STATE_ID : number
+
+  @Column({nullable:true})
+  LATITUDE: string
+
+  @Column({nullable:true})
+  LONGITUDE: string
+
+  @Column({nullable: true,unique:true})
+  EMAILID : string
+
+  @Column({nullable: true,unique:true})
+  WEBSITE : string
+
+  @Column({nullable: false,unique: true})
+  PHONE : string
+
+  @Column({nullable: true})
+  FAX : string
+
 }

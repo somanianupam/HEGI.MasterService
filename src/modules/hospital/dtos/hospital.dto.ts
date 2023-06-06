@@ -1,27 +1,53 @@
-import { IsNotEmpty, IsOptional } from '@nestjs/class-validator';
-import { IsString } from 'class-validator';
-import { AddressDTO } from 'src/modules/address/dtos/address.dto';
+import { IsNotEmpty, IsOptional,MaxLength,IsString,MinLength,IsNumberString, IsEmail } from '@nestjs/class-validator';
+
 export class HospitalDTO {
-  @IsNotEmpty()
-  @IsString()
-  hospitalName: string;
 
   @IsNotEmpty()
   @IsString()
-  locatorId: number;
-
-  @IsNotEmpty()
-  @IsString()
-  phone: string;
+  @MaxLength(200)
+  HOSPITAL_NAME: string;
 
   @IsOptional()
   @IsString()
-  fax: string;
+  @MaxLength(500)
+  HOSPITAL_TYPE: string;
+
+  @IsNotEmpty()
+  @IsString()
+  @MaxLength(200)
+  ADDRESS: string;
+
+  @IsNotEmpty()
+  @MinLength(6)
+  @MaxLength(6)
+  @IsNumberString()
+  PINCODE: string;
+
+  @IsOptional()
+  @IsEmail()
+  @MaxLength(200)
+  EMAILID: string;
 
   @IsOptional()
   @IsString()
-  website: string;
+  @MaxLength(500)
+  WEBSITE: string;
 
-  @IsNotEmpty()
-  address: AddressDTO;
+  @IsOptional()
+  @IsString()
+  @MaxLength(20)
+  FAX: string;
+
+  @IsOptional()
+  CITY_ID: number;
+
+  @IsOptional()
+  STATE_ID: number
+
+  @IsOptional()
+  LATITUDE: string
+
+  @IsOptional()
+  LONGITUDE:string
+
 }
