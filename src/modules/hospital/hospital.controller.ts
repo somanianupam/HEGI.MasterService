@@ -4,6 +4,7 @@ import { Hospital } from '../common/entities/hospital.entity';
 import { Crud } from '@nestjsx/crud';
 import { HospitalDTO } from './dtos/hospital.dto';
 
+
 @Crud({
   model: {
     type: Hospital,
@@ -19,7 +20,9 @@ import { HospitalDTO } from './dtos/hospital.dto';
     },
   },
 })
+
 @Controller('hospitals')
+
 export class HospitalController {
   constructor(private readonly service: HospitalService) {}
 }
