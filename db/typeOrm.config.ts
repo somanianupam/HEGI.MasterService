@@ -1,9 +1,9 @@
 
 import path from 'path';
 import { DataSource } from 'typeorm';
-import Config  from '../src/configs';
+import Config  from '../src/configs/app.configuration';
 
-const MConfig = Config[0]() as Record<string, any>;
+const MConfig = Config() as Record<string, any>;
 
 export  const AppDataSource = new DataSource({
     type: 'postgres',
