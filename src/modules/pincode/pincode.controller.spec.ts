@@ -3,8 +3,6 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { PinCodeController } from './pincode.controller';
 import { PinCodeService } from './pincode.service';
 import { PinCode } from '../common/entities/pincode.entity';
-import { Repository } from 'typeorm';
-import { getRepositoryToken } from '@nestjs/typeorm';
 import { PassportModule } from '@nestjs/passport';
 const passportModule = PassportModule.register({ defaultStrategy: 'jwt' });
 describe('PinCodeController', () => {

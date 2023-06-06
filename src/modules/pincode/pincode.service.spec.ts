@@ -2,8 +2,6 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { PinCodeService } from './pincode.service';
 import { PinCode } from '../common/entities/pincode.entity';
-import { Repository } from 'typeorm';
-import { getRepositoryToken } from '@nestjs/typeorm';
 
 describe('PinCodeService', () => {
   let service: PinCodeService;

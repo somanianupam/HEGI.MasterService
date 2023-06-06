@@ -29,8 +29,7 @@ describe('AuthController', () => {
   describe('generateToken', () => {
     it('should succeed', async () => {
       const result = {
-        access_token:
-          'hoDPPYDYZP2EKtMzhrWIbiIuwS7zxqGzvBLs_ZFpkEI',
+        access_token: 'hoDPPYDYZP2EKtMzhrWIbiIuwS7zxqGzvBLs_ZFpkEI',
       };
       const data = { username: 'Johnson Smith', usertype: 'user' };
       jest.spyOn(authService, 'generateToken').mockImplementation(async () => result);

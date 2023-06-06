@@ -1,8 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { HospitalService } from './hospital.service';
-import { Repository } from 'typeorm';
-import { getRepositoryToken } from '@nestjs/typeorm';
 import { Hospital } from '../common/entities/hospital.entity';
 
 describe('PinCodeService', () => {

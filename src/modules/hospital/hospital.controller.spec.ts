@@ -2,8 +2,6 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { HospitalController } from './hospital.controller';
 import { HospitalService } from './hospital.service';
-import { Repository } from 'typeorm';
-import { getRepositoryToken } from '@nestjs/typeorm';
 import { Hospital } from '../common/entities/hospital.entity';
 import { PassportModule } from '@nestjs/passport';
 const passportModule = PassportModule.register({ defaultStrategy: 'jwt' });
