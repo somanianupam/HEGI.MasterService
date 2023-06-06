@@ -5,7 +5,6 @@ import { TypeOrmCrudService } from '@nestjsx/crud-typeorm';
 
 @Injectable()
 export class PinCodeService extends TypeOrmCrudService<PinCode> {
-  
   constructor(@InjectRepository(PinCode) repo) {
     super(repo);
   }
