@@ -1,8 +1,9 @@
-import { Controller } from '@nestjs/common';
+import { Controller, UseGuards } from '@nestjs/common';
 import { HospitalService } from './hospital.service';
 import { Hospital } from '../common/entities/hospital.entity';
 import { Crud } from '@nestjsx/crud';
 import { HospitalDTO } from './dtos/hospital.dto';
+import { AuthGuard } from '@nestjs/passport';
 
 @Crud({
   model: {
@@ -20,6 +21,7 @@ import { HospitalDTO } from './dtos/hospital.dto';
   },
 })
 @Controller('hospitals')
+@UseGuards(AuthGuard())
 export class HospitalController {
   constructor(private readonly service: HospitalService) {}
 }

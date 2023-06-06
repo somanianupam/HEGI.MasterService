@@ -16,5 +16,5 @@ db:
     ssl: false
     logging: false
 jwt:
-  secret: 'YOUR_SECRET_KEY'
+  secret: 'hegi-microservice'
   expiry: '1h'
