@@ -8,7 +8,7 @@
   "scripts": {
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
-    "start": "npm run typeorm:run-migrations && nest start",
+    "start": "npm run migrate && nest start",
     "start:dev": "nest start --watch",
     "start:debug": "nest start --debug",
     "start:prod": "node dist/main",
@@ -20,9 +20,9 @@
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "prepare": "husky install",
     "typeorm": "typeorm-ts-node-commonjs",
-    "typeorm:run-migrations": "npm run typeorm migration:run -- -d db/typeOrm.config.ts",
-    "typeorm:generate-migration": "npm run typeorm -- -d db/typeOrm.config.ts migration:generate db/migrations/migration",
-    "typeorm:revert-migration": "npm run typeorm -- -d db/typeOrm.config.ts migration:revert"
+    "migrate": "npm run typeorm migration:run -- -d db/typeOrm.config.ts",
+    "migration:generate": "npm run typeorm -- -d db/typeOrm.config.ts migration:generate db/migrations/migration",
+    "migration:rollback": "npm run typeorm -- -d db/typeOrm.config.ts migration:revert"
   },
   "dependencies": {
     "@nestjs/axios": "^2.0.0",
