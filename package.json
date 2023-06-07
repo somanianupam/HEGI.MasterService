@@ -8,7 +8,7 @@
   "scripts": {
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
-    "start": "nest start",
+    "start": "npm run migrate && nest start",
     "start:dev": "nest start --watch",
     "start:debug": "nest start --debug",
     "start:prod": "node dist/main",
@@ -19,9 +19,10 @@
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "prepare": "husky install",
-    "migrate:generate": "npx ts-node ./db/migration.generate.ts",
-    "migrate": "npx sequelize-cli db:migrate",
-    "migrate:rollback": "npx sequelize-cli db:migrate:undo"
+    "typeorm": "typeorm-ts-node-commonjs",
+    "migrate": "npm run typeorm migration:run -- -d db/typeOrm.config.ts",
+    "migration:generate": "npm run typeorm -- -d db/typeOrm.config.ts migration:generate db/migrations/migration",
+    "migration:rollback": "npm run typeorm -- -d db/typeOrm.config.ts migration:revert"
   },
   "dependencies": {
     "@nestjs/axios": "^2.0.0",
@@ -33,6 +34,7 @@
     "@nestjs/platform-express": "^9.0.0",
     "@nestjs/sequelize": "^9.0.2",
     "@nestjs/terminus": "^9.2.2",
+    "@nestjs/typeorm": "^9.0.1",
     "axios": "^1.4.0",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.0",
@@ -45,6 +47,7 @@
     "rxjs": "^7.2.0",
     "sequelize-typescript": "^2.1.5",
     "sequelize-typescript-migration-lts": "^3.2.5",
+    "typeorm": "^0.3.16",
     "winston": "^3.8.2",
     "winston-daily-rotate-file": "^4.7.1"
   },
