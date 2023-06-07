@@ -17,7 +17,7 @@ import { AuthGuard } from '@nestjs/passport';
   },
 })
 @Controller('pincodes')
-@UseGuards(AuthGuard())
+//@UseGuards(AuthGuard())
 export class PinCodeController {
   constructor(private readonly service: PinCodeService) {}
 }

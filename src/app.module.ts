@@ -6,7 +6,7 @@ import { v4 as uuid } from 'uuid';
 import { PinCodeModule } from './modules/pincode/pincode.module';
 import { HealthModule } from './shared/health/health.module';
 import { LoggerService } from './shared/logger/logger.service';
-import Config from './configs';
+import Config from './shared/config';
 import { HospitalModule } from './modules/hospital/hospital.module';
 import { DatabaseModule } from './modules/common/database/database.module';
 import { AuthModule } from './modules/common/auth/auth.module';

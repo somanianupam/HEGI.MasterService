@@ -21,7 +21,7 @@ import { AuthGuard } from '@nestjs/passport';
   },
 })
 @Controller('hospitals')
-@UseGuards(AuthGuard())
+//@UseGuards(AuthGuard())
 export class HospitalController {
   constructor(private readonly service: HospitalService) {}
 }

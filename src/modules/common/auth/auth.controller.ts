@@ -1,7 +1,7 @@
 import { Controller, Post, Body } from '@nestjs/common';
 import { AuthService } from './auth.service';
 
-@Controller('generateToken')
+@Controller('token')
 export class AuthController {
   constructor(private authService: AuthService) {}
 
