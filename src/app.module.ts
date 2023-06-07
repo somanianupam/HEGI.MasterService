@@ -7,7 +7,9 @@ import { PinCodeModule } from './modules/pincode/pincode.module';
 import { HealthModule } from './shared/health/health.module';
 import { LoggerService } from './shared/logger/logger.service';
 import Config from './configs';
-
+import { HospitalModule } from './modules/hospital/hospital.module';
+import { DatabaseModule } from './modules/common/database/database.module';
+import { AuthModule } from './modules/common/auth/auth.module';
 const logFormat = winston.format.printf((msg) => {
   return `[${msg.timestamp}] [${msg.level}] [expressRequestId=${uuid()}]: ${msg.message}`;
 });
@@ -21,6 +23,7 @@ const logFormat = winston.format.printf((msg) => {
       expandVariables: true,
       envFilePath: ['.env'],
     }),
+    DatabaseModule,
     WinstonModule.forRoot({
       transports: [
         new winston.transports.File({
@@ -45,7 +48,9 @@ const logFormat = winston.format.printf((msg) => {
       },
     }),
     PinCodeModule,
+    HospitalModule,
     HealthModule,
+    AuthModule,
   ],
   providers: [LoggerService],
 })

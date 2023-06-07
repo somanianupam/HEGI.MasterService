@@ -5,7 +5,7 @@ import {
   HttpHealthIndicator,
   MemoryHealthIndicator,
   MicroserviceHealthIndicator,
-  SequelizeHealthIndicator,
+  TypeOrmHealthIndicator,
 } from '@nestjs/terminus';
 import { HealthEnum } from './enums/health.enum';
 import * as HealthConfig from '../../constants/health.endpoints';
@@ -14,7 +14,7 @@ import * as HealthConfig from '../../constants/health.endpoints';
 export class HealthService {
   constructor(
     private health: HealthCheckService,
-    private db: SequelizeHealthIndicator,
+    private db: TypeOrmHealthIndicator,
     private http: HttpHealthIndicator,
     private microservice: MicroserviceHealthIndicator,
     private memory: MemoryHealthIndicator,
